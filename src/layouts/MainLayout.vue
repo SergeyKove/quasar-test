@@ -1,47 +1,53 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
+  <q-layout view="hHh LpR lfr">
+    <q-header elevated class="bg-black">
+      <div class="container">
+        <q-toolbar>
+          <q-icon name="apple" :size="'xl'" />
 
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
-      </q-toolbar>
+          <q-toolbar-title>
+            BusinessChain
+          </q-toolbar-title>
+          
+          <q-btn flat color="grey" label="Главная"></q-btn>
+          <q-btn flat color="grey" label="Мои проекты" ></q-btn>
+          <q-btn-dropdown flat label="Витрины">
+            <q-list>
+              <q-item>Один</q-item>
+              <q-item>Два</q-item>
+              <q-item>Три</q-item>
+            </q-list>
+          </q-btn-dropdown>
+          
+          <q-icon name="apple" :size="'sm'" />
+          <q-icon name="apple" :size="'xl'" />
+        </q-toolbar>
+      </div>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
-
-        <EssentialLink
-          v-for="link in linksList"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
-
-    <q-page-container>
-      <router-view />
+    
+    <q-page-container class="bg-grey">
+        <div class="container">
+          <router-view />
+        </div>
     </q-page-container>
+    
+    <q-footer class="bg-white">
+      <div class="container">
+        <q-toolbar class="column">
+          <q-toolbar-title class="text-black"> 
+            ©  2017-2025, ООО «ИПИ-Лаб». Все права защищены
+          </q-toolbar-title>
+          <q-tabs class="text-black">
+            <q-tab label="Пользовательское соглашение"></q-tab>
+            <q-tab label="Политика конфиденциальности"></q-tab>
+            <q-tab label="Связаться с нами"></q-tab>
+            <q-tab><q-icon name="telegram" :size="'sm'" /></q-tab>
+            <q-tab><q-icon name="facebook" :size="'sm'" /></q-tab>
+          </q-tabs>
+        </q-toolbar>
+      </div>
+    </q-footer>
   </q-layout>
 </template>
 
@@ -49,50 +55,6 @@
 import { ref } from 'vue'
 import EssentialLink from 'components/EssentialLink.vue'
 
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-]
 
 const leftDrawerOpen = ref(false)
 
@@ -100,3 +62,7 @@ function toggleLeftDrawer () {
   leftDrawerOpen.value = !leftDrawerOpen.value
 }
 </script>
+
+<style scoped>
+  .container {width: 70%; margin: 0 auto;};
+</style>

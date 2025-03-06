@@ -29,11 +29,12 @@
 <script setup>
 import ProjectCardAccelerators from "./ProjectCardAccelerators.vue";
 import ProjectCardIndustries from "./ProjectCardIndustries.vue";
+import { ref } from "vue";
 const props = defineProps(["card"]);
 
 const favorites = ref([])
 
 function addFavorites(){
-  
+
 }
 </script>

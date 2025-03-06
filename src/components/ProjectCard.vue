@@ -19,11 +19,9 @@
           :industries="industries"
         />
       </div>
-      <q-img
-        style="height: 100px; max-width: 200px"
-        :src="card.projectLogo"
-      >
+      <q-img style="height: 100px; max-width: 200px" :src="card.projectLogo">
       </q-img>
+      <q-btn icon="star" title="Избранное"></q-btn>
     </q-card-section>
   </q-card>
 </template>
@@ -32,4 +30,10 @@
 import ProjectCardAccelerators from "./ProjectCardAccelerators.vue";
 import ProjectCardIndustries from "./ProjectCardIndustries.vue";
 const props = defineProps(["card"]);
+
+const favorites = ref([])
+
+function addFavorites(){
+  
+}
 </script>

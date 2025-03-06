@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh LpR lfr">
+  <q-layout view="hhh LpR lfr">
     <q-header elevated class="bg-black">
       <div class="container">
         <q-toolbar>
@@ -52,15 +52,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
 
-
-const leftDrawerOpen = ref(false)
-
-function toggleLeftDrawer () {
-  leftDrawerOpen.value = !leftDrawerOpen.value
-}
 </script>
 
 <style scoped>

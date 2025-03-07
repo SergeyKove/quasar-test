@@ -1,9 +1,9 @@
 <template>
-    <ul >
-        <li>
-            {{ accelerators.name }}
-        </li>
-    </ul>
+  <ul>
+    <li>
+      {{ accelerators.name }}
+    </li>
+  </ul>
 </template>
 
 <script setup>

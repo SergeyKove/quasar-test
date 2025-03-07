@@ -36,14 +36,14 @@ const url1 =
 const url2 =
   "https://elk-back-dev.businesschain.io/bch-service/api/v1/catalog/industries?lang=ru";
 
-async function apiResponse() {
+async function apiResponseAccelerators() {
   const data = await axios.get(url1);
   optionsAccelerators.value = data.data;
 }
-async function apiResponse1() {
+async function apiResponseIndustries() {
   const data = await axios.get(url2);
   optionsIndustries.value = data.data;
 }
-apiResponse();
-apiResponse1();
+apiResponseAccelerators();
+apiResponseIndustries();
 </script>

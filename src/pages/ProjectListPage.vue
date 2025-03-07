@@ -6,7 +6,12 @@
           <div class="q-pa-md example-column-row-wrapping">
             <div class="row" style="height: 300px; max-height: 100%">
               <div class="col-8"><ProjectList /></div>
-              <div class="col-4"><ProjectListFilterBlock /></div>
+              <div class="col-4">
+                <ProjectListFilterBlock
+                  v-model.acceleratorsName="acceleratorName"
+                  v-model.industriesName="industrieName"
+                />
+              </div>
             </div>
           </div>
         </div>

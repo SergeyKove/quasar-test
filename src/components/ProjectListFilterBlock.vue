@@ -2,7 +2,7 @@
   <div>
     <q-select
       filled
-      v-model="acceleratorsName"
+      v-model="acceleratorName"
       :options="optionsAccelerators.accelerators"
       option-value="id"
       option-label="name"
@@ -12,7 +12,7 @@
     ></q-select>
     <q-select
       filled
-      v-model="industriesName"
+      v-model="industrieName"
       :options="optionsIndustries"
       option-value="id"
       option-label="name"
@@ -28,8 +28,8 @@ import { ref } from "vue";
 import axios from "axios";
 const optionsAccelerators = ref([]);
 const optionsIndustries = ref([]);
-const acceleratorsName = defineModel("acceleratorsName");
-const industriesName = defineModel("industriesName");
+const acceleratorName = defineModel("acceleratorName");
+const industrieName = defineModel("industrieName");
 
 const url1 =
   "https://elk-back-dev.businesschain.io/bch-service/public/projectShowcase/getFilters";

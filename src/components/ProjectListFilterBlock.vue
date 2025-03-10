@@ -6,8 +6,6 @@
       :options="optionsAccelerators.accelerators"
       option-value="id"
       option-label="name"
-      emit-value
-      map-options
       style="min-width: 250px; max-width: 300px"
     ></q-select>
     <q-select
@@ -16,8 +14,6 @@
       :options="optionsIndustries"
       option-value="id"
       option-label="name"
-      emit-value
-      map-options
       style="min-width: 250px; max-width: 300px"
     ></q-select>
   </div>

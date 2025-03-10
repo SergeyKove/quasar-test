@@ -5,10 +5,12 @@
         <div id="q-app" style="min-height: 100vh">
           <div class="q-pa-md example-column-row-wrapping">
             <div class="row" style="height: 300px; max-height: 100%">
-              <div class="col-8"><ProjectList :cardProjects="cardProjects" /></div>
+              <div class="col-8">
+                <ProjectList :cardProjects="cardProjects" />
+              </div>
               <div class="col-4">
                 <ProjectListFilterBlock
-                  v-model.acceleratorsName="acceleratorName"
+                  v-model.accelerator-name="acceleratorName"
                   v-model.industriesName="industrieName"
                 />
               </div>
@@ -25,10 +27,8 @@ import ProjectList from "src/components/ProjectList.vue";
 import ProjectListFilterBlock from "src/components/ProjectListFilterBlock.vue";
 import { ref } from "vue";
 import axios from "axios";
-const acceleratorName = ref({})
-const industrieName = ref({})
-
-
+const acceleratorName = ref({});
+const industrieName = ref({});
 const cardProjects = ref([]);
 
 const url =

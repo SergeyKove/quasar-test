@@ -11,7 +11,7 @@
               <div class="col-4">
                 <ProjectListFilterBlock
                   v-model.acceleratorName="acceleratorName"
-                  v-model.industriesName="industrieName"
+                  v-model.industrieName="industrieName"
                 />
               </div>
             </div>

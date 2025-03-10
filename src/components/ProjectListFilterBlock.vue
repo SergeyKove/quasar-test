@@ -2,6 +2,7 @@
   <div>
     <q-select
       filled
+      multiple
       v-model="acceleratorName"
       :options="optionsAccelerators.accelerators"
       option-value="id"
@@ -10,6 +11,7 @@
     ></q-select>
     <q-select
       filled
+      multiple
       v-model="industrieName"
       :options="optionsIndustries"
       option-value="id"
@@ -27,17 +29,17 @@ const optionsIndustries = ref([]);
 const acceleratorName = defineModel("acceleratorName");
 const industrieName = defineModel("industrieName");
 
-const url1 =
+const urlFilters =
   "https://elk-back-dev.businesschain.io/bch-service/public/projectShowcase/getFilters";
-const url2 =
+const urlIndustries =
   "https://elk-back-dev.businesschain.io/bch-service/api/v1/catalog/industries?lang=ru";
 
 async function apiResponseAccelerators() {
-  const data = await axios.get(url1);
+  const data = await axios.get(urlFilters);
   optionsAccelerators.value = data.data;
 }
 async function apiResponseIndustries() {
-  const data = await axios.get(url2);
+  const data = await axios.get(urlIndustries);
   optionsIndustries.value = data.data;
 }
 apiResponseAccelerators();

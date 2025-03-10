@@ -10,8 +10,10 @@
               </div>
               <div class="col-4">
                 <ProjectListFilterBlock
-                  v-model.acceleratorName="acceleratorName"
-                  v-model.industrieName="industrieName"
+                  v-model:accelerator-name="acceleratorName"
+                  v-model:industrie-name="industrieName"
+                  @update:acceleratorName="updateListAccelerator"
+                  @update:industrieName="updateListIndustries"
                 />
               </div>
             </div>
@@ -27,18 +29,26 @@ import ProjectList from "src/components/ProjectList.vue";
 import ProjectListFilterBlock from "src/components/ProjectListFilterBlock.vue";
 import { ref } from "vue";
 import axios from "axios";
-const acceleratorName = ref({});
-const industrieName = ref({});
+const acceleratorName = ref([]);
+const industrieName = ref([]);
 const cardProjects = ref([]);
 
 const url =
   "https://elk-back-dev.businesschain.io/bch-service/public/projectShowcase/getProjectList?page=0&size=6";
-const url1 =
-  "https://elk-back-dev.businesschain.io/bch-service/public/projectShowcase/getFilters";
 
 async function apiResponse() {
   const data = await axios.post(url, { sortingDirection: "asc" });
   cardProjects.value = data.data.items;
 }
 apiResponse();
+
+async function updateListAccelerator(accelerators) {
+  const data = await axios.post(url, { sortingDirection: "asc", accelerators });
+  cardProjects.value = data.data.items;
+}
+
+async function updateListIndustries(industries) {
+  const data = await axios.post(url, { sortingDirection: "asc", industries });
+  cardProjects.value = data.data.items;
+}
 </script>

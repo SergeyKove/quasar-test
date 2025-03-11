@@ -2,19 +2,21 @@
   <q-layout>
     <q-page-container>
       <q-page>
-        <div id="q-app" style="min-height: 100vh">
+        <div id="q-app">
           <div class="q-pa-md example-column-row-wrapping">
-            <div class="row" style="height: 300px; max-height: 100%">
-              <div class="col-8">
-                <ProjectList :cardProjects="cardProjects" />
-              </div>
-              <div class="col-4">
-                <ProjectListFilterBlock
-                  v-model:accelerator-name="acceleratorName"
-                  v-model:industrie-name="industrieName"
-                  @update:acceleratorName="updateListAccelerator"
-                  @update:industrieName="updateListIndustries"
-                />
+            <div class="flex">
+              <div class="q-mx-auto flex">
+                <div class="col-8" style="max-width: 600px">
+                  <ProjectList :cardProjects="cardProjects" />
+                </div>
+                <div class="col-4">
+                  <ProjectListFilterBlock
+                    v-model:accelerator-name="acceleratorName"
+                    v-model:industrie-name="industrieName"
+                    @update:acceleratorName="updateListAccelerator"
+                    @update:industrieName="updateListIndustries"
+                  />
+                </div>
               </div>
             </div>
           </div>

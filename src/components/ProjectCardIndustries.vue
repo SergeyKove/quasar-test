@@ -1,10 +1,7 @@
 <template>
-  <span v-if="true">Отрасль:</span>
-  <ul>
-    <li>
-      {{ industries.name }}
-    </li>
-  </ul>
+  <q-chip square>
+    {{ industries.name }}
+  </q-chip>
 </template>
 
 <script setup>

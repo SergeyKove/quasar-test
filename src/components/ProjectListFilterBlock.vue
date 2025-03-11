@@ -12,7 +12,7 @@
             :options="optionsAccelerators.accelerators"
             option-value="id"
             option-label="name"
-            style="min-width: 250px; max-width: 300px; max-height: 50px"
+            style="min-width: 250px; max-width: 300px"
           ></q-select>
         </div>
         <div class="q-mt-lg">

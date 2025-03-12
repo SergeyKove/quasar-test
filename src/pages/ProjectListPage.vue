@@ -30,7 +30,7 @@
 import ProjectList from "src/components/ProjectList.vue";
 import ProjectListFilterBlock from "src/components/ProjectListFilterBlock.vue";
 import { computed, ref } from "vue";
-import { useProjectsStore } from "src/stores/example-store";
+import { useProjectsStore } from "src/stores/ProjectsStore";
 
 const acceleratorName = ref([]);
 const industrieName = ref([]);

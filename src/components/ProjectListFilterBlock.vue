@@ -9,7 +9,7 @@
             outlined
             multiple
             v-model="acceleratorName"
-            :options="optionsAccelerators.accelerators"
+            :options="optionsAccelerators"
             option-value="id"
             option-label="name"
             style="min-width: 250px; max-width: 300px"
@@ -33,27 +33,28 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import axios from "axios";
+import {
+  useFilterAcceleratorsStore,
+  useFilterIndustriesStore,
+} from "../stores/FiltersStore";
+import { computed } from "vue";
 
-const optionsAccelerators = ref([]);
-const optionsIndustries = ref([]);
 const acceleratorName = defineModel("acceleratorName");
 const industrieName = defineModel("industrieName");
 
-const urlFilters =
-  "https://elk-back-dev.businesschain.io/bch-service/public/projectShowcase/getFilters";
-const urlIndustries =
-  "https://elk-back-dev.businesschain.io/bch-service/api/v1/catalog/industries?lang=ru";
+const storeAccelerators = useFilterAcceleratorsStore();
+const storeIndustries = useFilterIndustriesStore();
 
-async function apiResponseAccelerators() {
-  const data = await axios.get(urlFilters);
-  optionsAccelerators.value = data.data;
+function getItems() {
+  storeAccelerators.getAccelerators();
+  storeIndustries.getIndustries();
 }
-async function apiResponseIndustries() {
-  const data = await axios.get(urlIndustries);
-  optionsIndustries.value = data.data;
-}
-apiResponseAccelerators();
-apiResponseIndustries();
+getItems();
+
+const optionsAccelerators = computed(() => {
+  return storeAccelerators.accelerators;
+});
+const optionsIndustries = computed(() => {
+  return storeIndustries.industries;
+});
 </script>

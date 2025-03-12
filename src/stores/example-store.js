@@ -1,21 +1,20 @@
-import { defineStore, acceptHMRUpdate } from 'pinia'
+import { defineStore } from "pinia";
+import { ref } from "vue";
+import axios from "axios";
 
-export const useCounterStore = defineStore('counter', {
-  state: () => ({
-    counter: 0
-  }),
+const url =
+  "https://elk-back-dev.businesschain.io/bch-service/public/projectShowcase/getProjectList?page=0&size=6";
 
-  getters: {
-    doubleCount: (state) => state.counter * 2
-  },
+export const useProjectsStore = defineStore("cardProject", () => {
+  const cardProject = ref([]);
 
-  actions: {
-    increment() {
-      this.counter++
-    }
+  async function getProjects(filters) {
+    const data = await axios.post(url, filters);
+    cardProject.value = data.data.items;
   }
-})
 
-if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useCounterStore, import.meta.hot))
-}
+  return {
+    cardProject,
+    getProjects,
+  };
+});

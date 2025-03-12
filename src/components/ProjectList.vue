@@ -6,5 +6,6 @@
 
 <script setup>
 import ProjectCard from "./ProjectCard.vue";
+
 const props = defineProps(["cardProjects"]);
 </script>

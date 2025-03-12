@@ -35,6 +35,7 @@
 <script setup>
 import { ref } from "vue";
 import axios from "axios";
+
 const optionsAccelerators = ref([]);
 const optionsIndustries = ref([]);
 const acceleratorName = defineModel("acceleratorName");

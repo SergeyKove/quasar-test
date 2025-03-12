@@ -13,8 +13,8 @@
                   <ProjectListFilterBlock
                     v-model:accelerator-name="acceleratorName"
                     v-model:industrie-name="industrieName"
-                    @update:acceleratorName="updateListAccelerator"
-                    @update:industrieName="updateListIndustries"
+                    @update:acceleratorName="getItems"
+                    @update:industrieName="getItems"
                   />
                 </div>
               </div>
@@ -29,28 +29,24 @@
 <script setup>
 import ProjectList from "src/components/ProjectList.vue";
 import ProjectListFilterBlock from "src/components/ProjectListFilterBlock.vue";
-import { ref } from "vue";
-import axios from "axios";
+import { computed, ref } from "vue";
+import { useProjectsStore } from "src/stores/example-store";
+
 const acceleratorName = ref([]);
 const industrieName = ref([]);
-const cardProjects = ref([]);
+const store = useProjectsStore();
 
-const url =
-  "https://elk-back-dev.businesschain.io/bch-service/public/projectShowcase/getProjectList?page=0&size=6";
-
-async function apiResponse() {
-  const data = await axios.post(url, { sortingDirection: "asc" });
-  cardProjects.value = data.data.items;
+function getItems() {
+  const filters = {
+    sortingDirection: "asc",
+    industries: industrieName.value,
+    accelerators: acceleratorName.value,
+  };
+  store.getProjects(filters);
 }
-apiResponse();
+getItems();
 
-async function updateListAccelerator(accelerators) {
-  const data = await axios.post(url, { sortingDirection: "asc", accelerators });
-  cardProjects.value = data.data.items;
-}
-
-async function updateListIndustries(industries) {
-  const data = await axios.post(url, { sortingDirection: "asc", industries });
-  cardProjects.value = data.data.items;
-}
+const cardProjects = computed(() => {
+  return store.cardProject;
+});
 </script>

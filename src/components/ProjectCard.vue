@@ -40,7 +40,11 @@
             :src="card.projectLogo"
           >
           </q-img>
-          <q-btn style="position: absolute; top: 10px; right: 20px;" icon="star" title="Избранное"></q-btn>
+          <q-btn
+            style="position: absolute; top: 10px; right: 20px"
+            icon="star"
+            title="Избранное"
+          ></q-btn>
         </div>
       </q-card-section>
     </q-card>
@@ -50,10 +54,6 @@
 <script setup>
 import ProjectCardAccelerators from "./ProjectCardAccelerators.vue";
 import ProjectCardIndustries from "./ProjectCardIndustries.vue";
-import { ref } from "vue";
+
 const props = defineProps(["card"]);
-
-const favorites = ref([]);
-
-function addFavorites() {}
 </script>
